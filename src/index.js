@@ -2,9 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './App'
+import GlobalStyles from './global-styles'
+import { ContextProvider } from './context/context'
+
 
 ReactDOM.render(
-  <App />,
-
+  <ContextProvider>
+    <GlobalStyles />
+    <App />
+  </ContextProvider>,
   document.getElementById('root')
 )
