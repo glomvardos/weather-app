@@ -1,14 +1,14 @@
-import { useContext, memo } from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components'
 
-import { context } from '../../context/context'
 import { getWeatherIcon } from '../../helpers/getWeatherIcon'
 import { LocationIcon } from '../UI/Icons'
+import { context } from '../../context/context'
 
 const Weather = () => {
-  const { todayWeather } = useContext(context)
+  const { currentWeather } = useContext(context)
 
-  const weatherString = Math.round(todayWeather.the_temp).toString()
+  const weatherString = Math.round(currentWeather.the_temp).toString()
   const weatherTempLeft = weatherString[0]
   const weatherTempRight = weatherString[1]
 
@@ -16,8 +16,8 @@ const Weather = () => {
     <StyledContainer>
       <StyledImgWrapper>
         <img
-          src={getWeatherIcon(todayWeather.weather_state_abbr)}
-          alt={todayWeather.weather_state_name}
+          src={getWeatherIcon(currentWeather.weather_state_abbr)}
+          alt={currentWeather.weather_state_name}
         />
       </StyledImgWrapper>
       <StyledDegrees>
@@ -25,17 +25,17 @@ const Weather = () => {
         <span className='right'>{weatherTempRight}</span>
         <span className='degrees'>°​C</span>
       </StyledDegrees>
-      <StyledWeatherStatus>{todayWeather.weather_state_name}</StyledWeatherStatus>
-      <StyledDate>Today &#183; {todayWeather.applicable_date}</StyledDate>
+      <StyledWeatherStatus>{currentWeather.weather_state_name}</StyledWeatherStatus>
+      <StyledDate>Today &#183; {currentWeather.applicable_date}</StyledDate>
       <StyledLocation>
         <LocationIcon />
-        {todayWeather.title}
+        {currentWeather.title}
       </StyledLocation>
     </StyledContainer>
   )
 }
 
-export default memo(Weather)
+export default Weather
 
 const StyledContainer = styled.div`
   display: flex;

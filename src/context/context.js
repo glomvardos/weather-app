@@ -3,7 +3,8 @@ import { createContext, useEffect, useState } from 'react'
 const context = createContext()
 
 const ContextProvider = ({ children }) => {
-  const [todayWeather, setTodayWeather] = useState({})
+  const [currentWeather, setCurrentWeather] = useState({})
+  const [weatherForecasts, setWeatherForecasts] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -17,14 +18,20 @@ const ContextProvider = ({ children }) => {
       setIsLoading(false)
     }
     const data = await response.json()
-
-    const transformedData = {
+    console.log(data)
+    const currentWeatherData = {
       ...data.consolidated_weather[0],
       title: data.title,
       id: data.woeid,
     }
 
-    setTodayWeather(transformedData)
+    const weatherForecastsData = Object.keys(data)
+      .filter(key => key === 'consolidated_weather')
+      .flatMap(key => data[key])
+      .slice(1)
+
+    setWeatherForecasts(weatherForecastsData)
+    setCurrentWeather(currentWeatherData)
   }
 
   useEffect(() => {
@@ -36,7 +43,8 @@ const ContextProvider = ({ children }) => {
   }
 
   const ctx = {
-    todayWeather,
+    currentWeather,
+    weatherForecasts,
     showModal,
     isLoading,
     showModalHandler,
