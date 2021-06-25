@@ -27,7 +27,19 @@ const Highlight = ({ name, value, windDirection }) => {
         <span>{metric}</span>
       </HighlightValue>
       {name === 'Wind status' && <Compass>{windDirection}</Compass>}
-      {name === 'Humidity' && <Bar></Bar>}
+      {name === 'Humidity' && (
+        <BarWrapper>
+          <Percentages>
+            <p>0</p>
+            <p>50</p>
+            <p>100</p>
+          </Percentages>
+          <Bar>
+            <Fill fill={value} />
+          </Bar>
+          <p className='percentage'>%</p>
+        </BarWrapper>
+      )}
     </StyledContainer>
   )
 }
@@ -61,4 +73,33 @@ const Compass = styled.p`
   margin-top: 3rem;
 `
 
-const Bar = styled.div``
+const BarWrapper = styled.div`
+  width: 229px;
+
+  .percentage {
+    text-align: right;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #a09fb1;
+  }
+`
+const Percentages = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+const Bar = styled.div`
+  background-color: white;
+  width: 100%;
+  height: 8px;
+  border-radius: 80px;
+`
+
+const Fill = styled.div`
+  background-color: #ffec65;
+  width: ${({ fill }) => fill + '%'};
+  height: 100%;
+  border-radius: 80px;
+`
