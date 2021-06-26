@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Spinner = styled.div`
   font-size: 10px;
-  margin: 0 auto;
+  margin: 35vh auto;
   text-indent: -9999em;
   width: 11em;
   height: 11em;

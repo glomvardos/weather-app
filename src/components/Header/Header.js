@@ -2,48 +2,40 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 
 import Spinner from '../UI/Spinner'
+import Error from '../UI/Error'
 import Weather from '../Weather/Weather'
 
 import { MyLocationIcon } from '../UI/Icons'
 import { context } from '../../context/context'
 
 const Header = ({ onShowModal }) => {
-  const { isLoading } = useContext(context)
+  const { isLoading, error } = useContext(context)
 
+  const errorMessage = <Error message={error} />
   const spinner = <Spinner />
-  const mainContent = (
-    <>
+  const weather = <Weather />
+
+  return (
+    <StyledHeader>
       <StyledContainer>
         <StyledButton onClick={onShowModal}>Search for places</StyledButton>
         <StyledMyLocation>
           <MyLocationIcon />
         </StyledMyLocation>
       </StyledContainer>
-      <Weather />
-    </>
-  )
-
-  return (
-    <StyledHeader isLoading={isLoading}>
       {isLoading && spinner}
-      {!isLoading && mainContent}
+      {!isLoading && !error && weather}
+      {error && !isLoading && errorMessage}
     </StyledHeader>
   )
 }
 
 export default Header
 
-const centerSpinner = `
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
 const StyledHeader = styled.header`
   background-color: #1e213a;
   min-height: 100vh;
   padding: 2.5rem;
-  ${({ isLoading }) => isLoading && centerSpinner}
 `
 const StyledContainer = styled.div`
   display: flex;

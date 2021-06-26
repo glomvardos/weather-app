@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 62.5%;
   }
   body {
+    background-color: #100e1d;
     font-family: 'Raleway', sans-serif;
     color: #E7E7EB;
   }

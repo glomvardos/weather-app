@@ -1,23 +1,45 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import styled from 'styled-components'
 
 import Modal from '../UI/Modal'
 import { CloseModalIcon, SearchIcon } from '../UI/Icons'
+import { context } from '../../context/context'
 
 const SearchBar = ({ onShowModal, showModal }) => {
   const [isFocus, setIsFocus] = useState(false)
+  const [inputLocation, setInputLocation] = useState('')
+
+  const { fetchLocationHandler, showModalHandler } = useContext(context)
+
+  const onSubmitHandler = event => {
+    event.preventDefault()
+
+    const enteredLocation = inputLocation.toLocaleLowerCase()
+
+    if (enteredLocation.trim() === '') return
+
+    fetchLocationHandler(enteredLocation)
+
+    setInputLocation('')
+    showModalHandler()
+  }
 
   return (
     <Modal showModal={showModal} onShowModal={onShowModal}>
       <CloseModalIcon onShowModal={onShowModal} />
-      <StyledForm>
+      <StyledForm onSubmit={onSubmitHandler}>
         <StyledInputWrapper
           isFocus={isFocus}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
         >
           <SearchIcon isFocus={isFocus} />
-          <StyledInput placeholder='search location' />
+          <StyledInput
+            type='text'
+            value={inputLocation}
+            onChange={event => setInputLocation(event.target.value)}
+            placeholder='search location'
+          />
         </StyledInputWrapper>
         <StyledSearchButton>Search</StyledSearchButton>
       </StyledForm>

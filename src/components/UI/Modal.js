@@ -23,5 +23,5 @@ const StyledModal = styled.div`
   padding: 2.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   transform: ${({ showModal }) => (showModal ? 'translateY(0)' : 'translateY(-100%)')};
-  transition: transform 400ms;
+  transition: transform 500ms ease-in-out;
 `

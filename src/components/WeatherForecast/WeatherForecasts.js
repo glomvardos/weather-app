@@ -27,7 +27,6 @@ export default WeatherForecasts
 
 const StyledSection = styled.section`
   padding: 5rem;
-  background-color: #100e1d;
 `
 
 const ForecastsContainer = styled.div`

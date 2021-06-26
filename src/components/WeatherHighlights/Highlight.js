@@ -75,6 +75,7 @@ const Compass = styled.p`
 
 const BarWrapper = styled.div`
   width: 229px;
+  margin-top: 1.5rem;
 
   .percentage {
     text-align: right;

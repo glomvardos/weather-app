@@ -1,42 +1,58 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState, useCallback } from 'react'
+import { fetchWeatherForecasts, fetchWoeid } from '../helpers/fetchWeather'
 
 const context = createContext()
 
 const ContextProvider = ({ children }) => {
   const [currentWeather, setCurrentWeather] = useState({})
   const [weatherForecasts, setWeatherForecasts] = useState([])
+  const [woeid, setWoeid] = useState(946738)
   const [showModal, setShowModal] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
 
-  const fetchWeatherHandler = async () => {
-    setIsLoading(true)
-    const response = await fetch(
-      'https://cors-anywhere-venky.herokuapp.com/https://www.metaweather.com/api/location/44418'
-    )
-
-    if (response.ok) {
-      setIsLoading(false)
+  // Fetch Location based on the user input
+  const fetchLocationHandler = async location => {
+    setError(null)
+    try {
+      const { response, woeid: locationWoeid } = await fetchWoeid(location)
+      if (!response.ok) {
+        throw new Error()
+      }
+      setWoeid(locationWoeid)
+    } catch (err) {
+      setError('No weather data found for the specified location!')
     }
-    const data = await response.json()
-    console.log(data)
-    const currentWeatherData = {
-      ...data.consolidated_weather[0],
-      title: data.title,
-      id: data.woeid,
-    }
-
-    const weatherForecastsData = Object.keys(data)
-      .filter(key => key === 'consolidated_weather')
-      .flatMap(key => data[key])
-      .slice(1)
-
-    setWeatherForecasts(weatherForecastsData)
-    setCurrentWeather(currentWeatherData)
   }
+
+  // Pass woeid to weather handler
+  const fetchWeatherHandler = useCallback(async () => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const { response, currentWeatherData, weatherForecastsData } = await fetchWeatherForecasts(
+        woeid
+      )
+
+      if (response.ok) {
+        setIsLoading(false)
+      }
+
+      if (!response.ok) {
+        throw new Error()
+      }
+      setCurrentWeather(currentWeatherData)
+      setWeatherForecasts(weatherForecastsData)
+    } catch (err) {
+      setIsLoading(false)
+      setError('Something went wrong! Please try again!')
+    }
+  }, [woeid])
 
   useEffect(() => {
     fetchWeatherHandler()
-  }, [])
+  }, [fetchWeatherHandler])
 
   const showModalHandler = () => {
     setShowModal(prevState => !prevState)
@@ -47,7 +63,9 @@ const ContextProvider = ({ children }) => {
     weatherForecasts,
     showModal,
     isLoading,
+    error,
     showModalHandler,
+    fetchLocationHandler,
   }
 
   return <context.Provider value={ctx}>{children}</context.Provider>

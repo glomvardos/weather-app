@@ -27,7 +27,6 @@ const WeatherHighlights = () => {
 export default WeatherHighlights
 
 const StyledSection = styled.section`
-  background-color: #100e1d;
   padding: 0 2.4rem 2.4rem 2.4rem;
 `
 
