@@ -9,7 +9,7 @@ import { MyLocationIcon } from '../UI/Icons'
 import { context } from '../../context/context'
 
 const Header = ({ onShowModal }) => {
-  const { isLoading, error } = useContext(context)
+  const { isLoading, error, fetchCurrentLocation } = useContext(context)
 
   const errorMessage = <Error message={error} />
   const spinner = <Spinner />
@@ -19,7 +19,7 @@ const Header = ({ onShowModal }) => {
     <StyledHeader>
       <StyledContainer>
         <StyledButton onClick={onShowModal}>Search for places</StyledButton>
-        <StyledMyLocation>
+        <StyledMyLocation onClick={fetchCurrentLocation}>
           <MyLocationIcon />
         </StyledMyLocation>
       </StyledContainer>

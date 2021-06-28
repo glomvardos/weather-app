@@ -1,7 +1,5 @@
-export const fetchWoeid = async location => {
-  const response = await fetch(
-    `https://cors-anywhere-venky.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${location}`
-  )
+export const fetchWoeid = async url => {
+  const response = await fetch(url)
 
   const data = await response.json()
   const { woeid } = data[0]
