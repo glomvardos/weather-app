@@ -4,13 +4,18 @@ import styled from 'styled-components'
 import { getWeatherIcon } from '../../helpers/getWeatherIcon'
 import { LocationIcon } from '../UI/Icons'
 import { context } from '../../context/context'
+import { getDate } from '../../helpers/getDate'
+import { convertToFahrenHeit } from '../../helpers/convertToFahrenheit'
 
 const Weather = () => {
-  const { currentWeather } = useContext(context)
+  const { currentWeather, isFahrenheit } = useContext(context)
 
-  const weatherString = Math.round(currentWeather.the_temp).toString()
+  const degrees = Math.round(currentWeather.the_temp)
+  const weatherString = isFahrenheit ? convertToFahrenHeit(degrees).toString() : degrees.toString()
   const weatherTempLeft = weatherString[0]
   const weatherTempRight = weatherString[1]
+
+  const { day, dateMonth } = getDate(currentWeather.applicable_date)
 
   return (
     <StyledContainer>
@@ -23,10 +28,12 @@ const Weather = () => {
       <StyledDegrees>
         <span className='left'>{weatherTempLeft}</span>
         <span className='right'>{weatherTempRight}</span>
-        <span className='degrees'>°​C</span>
+        <span className='degrees'>{isFahrenheit ? '°​F' : '°​C'}</span>
       </StyledDegrees>
       <StyledWeatherStatus>{currentWeather.weather_state_name}</StyledWeatherStatus>
-      <StyledDate>Today &#183; {currentWeather.applicable_date}</StyledDate>
+      <StyledDate>
+        Today &#183; {day}, {dateMonth}
+      </StyledDate>
       <StyledLocation>
         <LocationIcon />
         {currentWeather.title}

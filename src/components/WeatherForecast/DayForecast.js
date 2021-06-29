@@ -1,19 +1,28 @@
 import styled from 'styled-components'
+import { getDate } from '../../helpers/getDate'
 import { getWeatherIcon } from '../../helpers/getWeatherIcon'
 
-const DayForecast = ({ date, icon, max, min }) => {
+const DayForecast = ({ date, icon, max, min, i, isFahrenheit }) => {
   const maxDegrees = max.toFixed()
   const lowDegrees = min.toFixed()
 
+  const { day, dateMonth } = getDate(date)
+
   return (
     <StyledContainer>
-      <StyledDate>{date}</StyledDate>
+      <StyledDate>{i === 0 ? 'Tomorrow' : `${day}, ${dateMonth}`}</StyledDate>
       <StyledImgWrapper>
         <img src={getWeatherIcon(icon)} alt={icon} />
       </StyledImgWrapper>
       <StyledDegreesContainer>
-        <StyledMaxDegrees>{maxDegrees}°​C</StyledMaxDegrees>
-        <StyledLowDegrees>{lowDegrees}°​C</StyledLowDegrees>
+        <StyledMaxDegrees>
+          {maxDegrees}
+          {isFahrenheit ? '°​F' : '°​C'}
+        </StyledMaxDegrees>
+        <StyledLowDegrees>
+          {lowDegrees}
+          {isFahrenheit ? '°​F' : '°​C'}
+        </StyledLowDegrees>
       </StyledDegreesContainer>
     </StyledContainer>
   )

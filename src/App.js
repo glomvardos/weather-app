@@ -8,15 +8,15 @@ import Footer from './components/Footer/Footer'
 import { context } from './context/context'
 
 const App = () => {
-  const { showModal, showModalHandler, error } = useContext(context)
+  const { showModal, showModalHandler, error, isLoading } = useContext(context)
 
   return (
     <>
       <SearchBar showModal={showModal} onShowModal={showModalHandler} />
       <Header onShowModal={showModalHandler} />
-      {!error && <WeatherForecasts />}
-      {!error && <WeatherHighlights />}
-      {!error && <Footer />}
+      {!error && !isLoading && <WeatherForecasts />}
+      {!error && !isLoading && <WeatherHighlights />}
+      {!error && !isLoading && <Footer />}
     </>
   )
 }

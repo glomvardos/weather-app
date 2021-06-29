@@ -8,6 +8,7 @@ const ContextProvider = ({ children }) => {
   const [weatherForecasts, setWeatherForecasts] = useState([])
   const [woeid, setWoeid] = useState(946738)
   const [coords, setCoords] = useState({})
+  const [isFahrenheit, setIsFahrenheit] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -55,7 +56,6 @@ const ContextProvider = ({ children }) => {
 
   // Fetch Location based on the user input
   const fetchLocationHandler = async location => {
-    setIsLoading(true)
     setError(null)
 
     try {
@@ -80,7 +80,6 @@ const ContextProvider = ({ children }) => {
 
   // Pass woeid to weather handler
   const fetchWeatherHandler = useCallback(async () => {
-    setIsLoading(true)
     setError(null)
     try {
       const { response, currentWeatherData, weatherForecastsData } = await fetchWeatherForecasts(
@@ -118,10 +117,12 @@ const ContextProvider = ({ children }) => {
     weatherForecasts,
     showModal,
     isLoading,
+    isFahrenheit,
     error,
     showModalHandler,
     fetchLocationHandler,
     fetchCurrentLocation,
+    setIsFahrenheit,
   }
 
   return <context.Provider value={ctx}>{children}</context.Provider>
