@@ -42,10 +42,6 @@ const ContextProvider = ({ children }) => {
         if (!response.ok) {
           throw new Error()
         }
-        if (woeid === locationWoeid) {
-          setIsLoading(false)
-          return
-        }
 
         setWoeid(locationWoeid)
       } catch (err) {
