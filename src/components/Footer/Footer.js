@@ -16,6 +16,11 @@ const StyledFooter = styled.footer`
   padding: 2.5rem;
   margin-top: 3rem;
   text-align: center;
+
+  @media (min-width: 1440px) {
+    padding: 0;
+    margin-top: 8rem;
+  }
 `
 
 const StyledText = styled.p`

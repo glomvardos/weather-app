@@ -32,7 +32,7 @@ const Spinner = styled.div`
   }
 
   &::after {
-    background: #1e213a;
+    background: ${({ bg }) => (bg === 'dark' ? '#100e1d' : '#1e213a')};
     width: 75%;
     height: 75%;
     border-radius: 50%;

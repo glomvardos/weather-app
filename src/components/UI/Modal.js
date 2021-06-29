@@ -24,4 +24,10 @@ const StyledModal = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   transform: ${({ showModal }) => (showModal ? 'translateY(0)' : 'translateY(-100%)')};
   transition: transform 500ms ease-in-out;
+
+  @media (min-width: 1440px) {
+    max-width: 33.3vw;
+    min-height: 100%;
+    transform: ${({ showModal }) => (showModal ? 'translateX(0)' : 'translateX(-100%)')};
+  }
 `

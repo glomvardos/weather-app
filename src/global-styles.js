@@ -20,5 +20,17 @@ const GlobalStyles = createGlobalStyle`
   p {
     color: #88869D;
   }
+
+  @media(min-width: 1440px) {
+    body {
+      overflow: hidden;
+    }
+    
+    #root {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+    } 
+  }
 `
 export default GlobalStyles

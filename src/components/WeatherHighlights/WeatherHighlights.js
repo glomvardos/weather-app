@@ -28,6 +28,10 @@ export default WeatherHighlights
 
 const StyledSection = styled.section`
   padding: 0 2.4rem 2.4rem 2.4rem;
+
+  @media (min-width: 1440px) {
+    padding: 2rem 15.4rem;
+  }
 `
 
 const StyledTitle = styled.h2`
@@ -39,4 +43,9 @@ const HighlightContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 3.2rem;
+
+  @media (min-width: 1440px) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3.2rem;
+  }
 `

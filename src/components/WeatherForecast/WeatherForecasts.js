@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components'
 
 import DayForecast from './DayForecast'
@@ -42,12 +42,19 @@ export default WeatherForecasts
 
 const StyledSection = styled.section`
   padding: 5rem;
+  @media (min-width: 1440px) {
+    padding: 4rem 15.4rem;
+  }
 `
 
 const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 2.5rem;
+
+  @media (min-width: 1440px) {
+    justify-content: flex-start;
+  }
 `
 
 const StyledCelsius = styled.button`
@@ -71,4 +78,9 @@ const ForecastsContainer = styled.div`
   column-gap: 2.6rem;
   row-gap: 3.2rem;
   justify-content: center;
+
+  @media (min-width: 1440px) {
+    grid-template-columns: repeat(5, minmax(120px, 120px));
+    justify-content: flex-start;
+  }
 `

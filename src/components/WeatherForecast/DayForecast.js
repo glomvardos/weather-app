@@ -4,7 +4,7 @@ import { getWeatherIcon } from '../../helpers/getWeatherIcon'
 
 const DayForecast = ({ date, icon, max, min, i, isFahrenheit }) => {
   const maxDegrees = max.toFixed()
-  const lowDegrees = min.toFixed()
+  const minDegrees = min.toFixed()
 
   const { day, dateMonth } = getDate(date)
 
@@ -20,7 +20,7 @@ const DayForecast = ({ date, icon, max, min, i, isFahrenheit }) => {
           {isFahrenheit ? '°​F' : '°​C'}
         </StyledMaxDegrees>
         <StyledLowDegrees>
-          {lowDegrees}
+          {minDegrees}
           {isFahrenheit ? '°​F' : '°​C'}
         </StyledLowDegrees>
       </StyledDegreesContainer>
