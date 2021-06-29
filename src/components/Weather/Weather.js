@@ -30,7 +30,7 @@ const Weather = () => {
         <span className='right'>{weatherTempRight}</span>
         <span className='degrees'>{isFahrenheit ? '°​F' : '°​C'}</span>
       </StyledDegrees>
-      <StyledWeatherStatus>{currentWeather.weather_state_name}</StyledWeatherStatus>
+      <StyledWeatherState>{currentWeather.weather_state_name}</StyledWeatherState>
       <StyledDate>
         Today &#183; {day}, {dateMonth}
       </StyledDate>
@@ -49,6 +49,10 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 7rem;
+
+  @media (min-width: 768px) {
+    margin-top: 9rem;
+  }
 `
 
 const StyledImgWrapper = styled.div`
@@ -81,9 +85,12 @@ const StyledDegrees = styled.h1`
     margin-top: 2rem;
     font-weight: 100;
   }
+  @media (min-width: 768px) {
+    margin: 8rem 0;
+  }
 `
 
-const StyledWeatherStatus = styled.h2`
+const StyledWeatherState = styled.h2`
   color: #a09fb1;
   font-size: 3.6rem;
   font-weight: 600;
