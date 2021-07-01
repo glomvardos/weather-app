@@ -11,9 +11,10 @@ const Weather = () => {
   const { currentWeather, isFahrenheit } = useContext(context)
 
   const degrees = Math.round(currentWeather.the_temp)
-  const weatherString = isFahrenheit ? convertToFahrenHeit(degrees).toString() : degrees.toString()
+  const weatherString = isFahrenheit ? convertToFahrenHeit(degrees).toFixed() : degrees.toFixed()
   const weatherTempLeft = weatherString[0]
-  const weatherTempRight = weatherString[1]
+  const weatherTempRight =
+    weatherString.length >= 3 ? weatherString[1] + weatherString[2] : weatherString[1]
 
   const { day, dateMonth } = getDate(currentWeather.applicable_date)
 
