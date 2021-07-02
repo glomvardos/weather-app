@@ -50,10 +50,6 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 7rem;
-
-  @media (min-width: 768px) {
-    margin-top: 9rem;
-  }
 `
 
 const StyledImgWrapper = styled.div`
@@ -87,7 +83,7 @@ const StyledDegrees = styled.h1`
     font-weight: 100;
   }
   @media (min-width: 768px) {
-    margin: 8rem 0;
+    margin: 8rem 0 5.5rem 0;
   }
 `
 

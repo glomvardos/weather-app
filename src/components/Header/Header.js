@@ -36,6 +36,9 @@ const StyledHeader = styled.header`
   background-color: #1e213a;
   min-height: 100vh;
   padding: 2.5rem;
+  @media (min-width: 768px) {
+    padding: 4rem;
+  }
 `
 const StyledContainer = styled.div`
   display: flex;
