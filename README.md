@@ -3,21 +3,9 @@
 <h1 align="center">Weather App</h1>
 
 <div align="center">
-   Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
-</div>
-
-<div align="center">
   <h3>
     <a href="https://weatherapp-2021.netlify.app/">
       Demo
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/solutions/UJwD3GpEItbl5NGhjORR">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv">
-      Challenge
     </a>
   </h3>
 </div>
@@ -29,7 +17,6 @@
 - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
 - [Built With](#built-with)
-- [Features](#features)
 - [How To Use](#how-to-use)
 - [Contact](#contact)
 
@@ -37,19 +24,13 @@
 
 ## Overview
 
-React and Styled Components
+I have created this project with React and Styled Components.
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-
-## Features
-
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
-
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) was to build an application to complete the given user stories.
 
 ## How To Use
 
@@ -72,3 +53,4 @@ $ npm start
 
 - GitHub [@glomvardos](https://github.com/glomvardos)
 - Twitter [@glomvardos](https://twitter.com/glomvardos)
+- Portfolio [@glomvardos](https://glomvardos.com)
