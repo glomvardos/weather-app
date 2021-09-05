@@ -86,6 +86,7 @@ const StyledCloseModalIcon = styled.svg`
   margin-left: auto;
   width: 24px;
   height: 24px;
+  cursor: pointer;
   path {
     fill: #fff;
   }
