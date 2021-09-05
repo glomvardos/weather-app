@@ -75,6 +75,7 @@ const StyledMyLocationIcon = styled.svg`
   width: 22px;
   height: 22px;
   margin: auto;
+  cursor: pointer;
 `
 const StyledLocationIcon = styled.svg`
   width: 19px;
@@ -102,11 +103,14 @@ const StyledSearchIcon = styled.svg`
 
 const StyledCelsiusIcon = styled.svg`
   display: block;
+  border-radius: 50%;
   width: 24px;
-  height: 28px;
+  height: 24px;
 `
 
 const StyledFahrenheitIcon = styled.svg`
+  display: block;
+  border-radius: 50%;
   width: 24px;
-  height: 28px;
+  height: 24px;
 `
