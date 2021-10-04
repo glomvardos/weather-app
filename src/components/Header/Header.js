@@ -62,4 +62,5 @@ const StyledMyLocation = styled.button`
   padding: 0.9rem;
   border: none;
   border-radius: 50%;
+  cursor: pointer;
 `

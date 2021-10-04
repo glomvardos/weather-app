@@ -75,7 +75,6 @@ const StyledMyLocationIcon = styled.svg`
   width: 22px;
   height: 22px;
   margin: auto;
-  cursor: pointer;
 `
 const StyledLocationIcon = styled.svg`
   width: 19px;
